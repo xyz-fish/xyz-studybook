@@ -1,0 +1,23 @@
+{
+	"name": "xyz-studybook",
+	"version": "1.0.0",
+	"description": "kkb 学习记录",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/xyz-fish/xyz-studybook.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/xyz-fish/xyz-studybook/issues"
+	},
+	"homepage": "https://github.com/xyz-fish/xyz-studybook#readme",
+	"devDependencies": {
+		"jest": "^27.3.1"
+	}
+}
