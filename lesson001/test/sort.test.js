@@ -1,15 +1,43 @@
 const selectSort = require('../selectSort')
 const insertSort = require('../insertSort')
+const bubbleSort = require('../bubbleSort')
+const quickSort = require('../quickSort')
 
-const case01 = [5, 4, 3, 2, 1, -1]
-const case02 = [4, 3, 1, 2, 5, 6, -1, 878, 3]
+const sortMap = [
+  {
+    type: 'select',
+    sort: selectSort
+  },
+  {
+    type: 'insert',
+    sort: insertSort
+  },
+  {
+    type: 'bubble',
+    sort: bubbleSort
+  },
+  {
+    type: 'quick',
+    sort: quickSort
+  }
+]
 
-test('insert sort', () => {
-  expect(insertSort(case01)).toStrictEqual([-1, 1, 2, 3, 4, 5])
-  expect(insertSort(case02)).toStrictEqual([-1, 1, 2, 3, 3, 4, 5, 6, 878])
-})
+const cases = [
+  {
+    input: [5, 4, 3, 2, 1, -1],
+    output: [-1, 1, 2, 3, 4, 5]
+  },
+  {
+    input: [4, 3, 1, 2, 5, 6, -1, 878, 3],
+    output: [-1, 1, 2, 3, 3, 4, 5, 6, 878]
+  }
+]
 
-test('select sort', () => {
-  expect(selectSort(case01)).toStrictEqual([-1, 1, 2, 3, 4, 5])
-  expect(selectSort(case02)).toStrictEqual([-1, 1, 2, 3, 3, 4, 5, 6, 878])
+sortMap.forEach((element) => {
+  cases.forEach((c) => {
+    test(`${element.type} sort`, () => {
+      const sort = element.sort
+      expect(sort(c.input)).toStrictEqual(c.output)
+    })
+  })
 })
