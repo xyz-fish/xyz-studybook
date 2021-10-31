@@ -2,6 +2,7 @@ const selectSort = require('../selectSort')
 const insertSort = require('../insertSort')
 const bubbleSort = require('../bubbleSort')
 const quickSort = require('../quickSort')
+const shellSort = require('../shellSort')
 
 const sortMap = [
   {
@@ -15,6 +16,10 @@ const sortMap = [
   {
     type: 'bubble',
     sort: bubbleSort
+  },
+  {
+    type: 'shell',
+    sort: shellSort
   },
   {
     type: 'quick',

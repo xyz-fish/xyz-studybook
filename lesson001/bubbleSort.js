@@ -12,6 +12,4 @@ function bubbleSort(arr) {
   return arr
 }
 
-bubbleSort([3, 2, 1])
-
 module.exports = bubbleSort
