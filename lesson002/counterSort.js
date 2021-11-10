@@ -8,22 +8,20 @@ function counterSort(arr) {
 
   for (let i = 0; i < arr.length; i++) {
     const count = arr[i]
+    if (counter[count] === undefined) counter[count] = 0
     counter[count]++
   }
 
   let index = 0
 
-  let res = []
-
-  for (let i = 0; i < counter.length; i++) {
-    while (counter[i] >= min) {
+  for (let i = min; i < counter.length; i++) {
+    while (counter[i] > 0) {
       arr[index++] = i
       counter[i]--
     }
   }
 
-  console.log(arr)
   return arr
 }
 
-counterSort([1, 2, 4, 6, 9, 2, 3])
+counterSort([1, 2, 4, 6, 9, 2, 3, -1, -2])
