@@ -24,3 +24,23 @@ const l2 = generateList(data2)
 const res = generateArray(mergeSortList(l1, l2))
 
 console.log(res)
+
+function mergeSortList2(l1, l2) {
+  let prevHead = new ListNode(0)
+  let prev = prevHead
+
+  while (l1 !== null && l2 !== null) {
+    if (l1.val < l2.val) {
+      prev.next = l1
+      l1 = l1.next
+    } else {
+      prev.next = l2
+      l2 = l2.next
+    }
+    prev = prev.next
+  }
+
+  prev.next = l1 === null ? l2 : l1
+
+  return prevHead.next
+}

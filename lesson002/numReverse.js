@@ -31,8 +31,23 @@ function intergerPalindrome(s) {
   return true
 }
 
-let c = 123321
+let c = 12321
 
 validReverse(c)
 
+function f2(x) {
+  if (x < 0 || (x % 10 === 0 && x !== 0)) {
+    return false
+  }
+
+  let revertedNumber = 0
+  while (x > revertedNumber) {
+    revertedNumber = revertedNumber * 10 + (x % 10)
+    x = Math.floor(x / 10)
+  }
+
+  return x === revertedNumber || x === Math.floor(revertedNumber / 10)
+}
+
+console.log(f2(c), 'g')
 console.log(intergerPalindrome(c))
