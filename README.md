@@ -4,6 +4,8 @@
 
 > 培养良好学习习惯
 
+#### 整理算法的分类 [思维导图](https://www.processon.com/mindmap/618e15aee401fd59f240a291)
+
 ## 日志
 
 - Phase 算法学习
