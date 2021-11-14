@@ -45,3 +45,30 @@ const l1 = generateList([1, 2, 3, 4, 5])
 const r1 = removeList2(l1, 4)
 
 console.log(JSON.stringify(r1))
+
+/**
+ * 删除链表中值是val的节点
+ * @param {*} l
+ * @param {*} val
+ */
+function removeListV(l, val) {
+  const head = new ListNode()
+  head.next = l
+  let cur = head
+
+  while (cur) {
+    if (cur.next && cur.next.val === val) {
+      cur.next = cur.next.next
+    } else {
+      cur = cur.next
+    }
+  }
+
+  return head.next
+}
+
+const l4 = generateList(['h', 'e', 'l', 'l', 'o'])
+
+const r4 = removeListV(l4, 'h')
+
+console.log(JSON.stringify(r4)) // is OK
