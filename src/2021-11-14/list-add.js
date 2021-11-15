@@ -37,10 +37,13 @@ function appendN(l, val, n) {
   }
   let cur = l
   let i = 0
-  while (cur.next && ++i < n) {
+  while (cur.next) {
+    if (i === n - 1) {
+      break
+    }
+    i++
     cur = cur.next
   }
-
   if (cur && cur.next) newNode.next = cur.next
   cur.next = newNode
   return l
@@ -48,5 +51,33 @@ function appendN(l, val, n) {
 
 const l2 = generateList([1, 2, 3, 4, 5])
 
-const r2 = appendN(l2, 9, 7)
-console.log(JSON.stringify(r2)) // OK
+const r2 = appendN(l2, 'xyz', 1)
+console.log(JSON.stringify(r2), 66) // OK
+
+function appendN2(l, n, val) {
+  const node = new ListNode(val)
+  const head = new ListNode()
+  head.next = l
+
+  let i = 0
+  let cur = head
+  while (cur.next) {
+    if (i === n) {
+      node.next = cur.next
+      cur.next = node
+      break
+    }
+    cur = cur.next
+    i++
+  }
+
+  if (cur.next === null) {
+    cur.next = node
+  }
+
+  return head.next
+}
+
+const l3 = generateList([1, 2, 3, 4, 5])
+const r3 = appendN2(l3, 7, 'fish')
+console.log(JSON.stringify(r3))
