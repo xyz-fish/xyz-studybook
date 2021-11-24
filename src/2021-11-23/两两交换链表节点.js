@@ -3,10 +3,11 @@ const { generateList, ListNode } = require('../../linkList')
 const exp = generateList([1, 2, 3, 4])
 
 function swapNode(l) {
+  if (l === null || l.next === null) return l
   const h = new ListNode()
   h.next = l
   let cur = h.next
-  let prev = null
+  let prev = l.next.next
   let i = 0
   while (cur && i < 2) {
     let tmp = cur.next
@@ -15,27 +16,21 @@ function swapNode(l) {
     cur = tmp
     i++
   }
-  console.log(prev, l)
   return prev
 }
 
-const exp1 = generateList([1, 2, 3])
-swapNode(exp1)
-
 function swapPairs(head) {
-  const dummy = new ListNode()
-  dummy.next = head
-
-  let cur = dummy.next
-  while (cur) {
+  let cur = head
+  let dummy = new ListNode()
+  let prev = dummy
+  while (cur !== null && cur.next !== null) {
     let tmp = cur.next.next
-    const prev = swapNode(cur)
-    prev.next = tmp
-    cur.next = prev
+    prev.next = swapNode(cur)
     cur = tmp
+    prev = prev.next.next
   }
 
-  console.log(cur, JSON.stringify(dummy.next))
+  return dummy.next
 }
 
 swapPairs(exp)
