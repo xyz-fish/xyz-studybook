@@ -1,0 +1,1 @@
+var longestWPI = function (hours) {}
