@@ -5,13 +5,22 @@ const { generateList, ListNode } = require('../../linkList')
  * @return {ListNode}
  */
 var detectCycle = function (head) {
-	let slow = head
-	let fast = head.next
+  if (head === null) return null
+  let slow = head
+  let fast = head.next
 
-	while (fast !== slow && fast !== null && fast.next !== null) {
-		slow = slow.next
-		fast = fast.next.next
-	}
+  while (fast !== slow && fast !== null && fast.next !== null) {
+    slow = slow.next
+    fast = fast.next.next
+  }
 
-	slow.
+  if (fast === null || fast.next === null) return null
+
+  fast = head
+  while (slow !== fast) {
+    slow = slow.next
+    fast = fast.next
+  }
+
+  return slow
 }
