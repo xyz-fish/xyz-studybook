@@ -4,7 +4,6 @@
 var MyCircularQueue = function (k) {
   this.head = 0
   this.tail = 0
-  this.count = 0
   this.queue = Array.from({ length: k })
   this.length = k
 }
@@ -15,14 +14,12 @@ var MyCircularQueue = function (k) {
  */
 MyCircularQueue.prototype.enQueue = function (value) {
   if (this.count === this.length) return false
-  this.count++
 
   if (this.tail === this.length) {
     this.tail = 1
   } else {
     this.tail++
   }
-
   this.queue[this.tail - 1] = value
 
   return true
