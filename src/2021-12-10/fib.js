@@ -39,9 +39,9 @@ function fib4(n, n1 = 1, n2 = 0) {
 
   return fib4(n - 1, n1 + n2, n1)
 }
-console.log(fib1(11))
-console.log(fib2(11))
-console.log(fib3(11))
-console.log(fib4(11))
+console.log(fib1(12))
+console.log(fib2(12))
+console.log(fib3(12))
+console.log(fib4(12))
 
 // 题目中 需要对 10000007 取余 放置数过大
