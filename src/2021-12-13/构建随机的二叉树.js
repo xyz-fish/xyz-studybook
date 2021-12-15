@@ -27,6 +27,10 @@ function buildRandomTree(n) {
   return root
 }
 
+for (let i = 0; i < 3; i++) {
+  // console.log(JSON.stringify(buildRandomTree(5)))
+}
+
 const randomTree = buildRandomTree(10)
 
 // 输出前序遍历
@@ -55,7 +59,7 @@ function afOrderInput(root) {
   afInput += root.val + ' '
 }
 
-console.log(randomTree)
+// console.log(randomTree)
 
 preOrderInput(randomTree)
 
@@ -63,8 +67,8 @@ inOrderInput(randomTree)
 
 afOrderInput(randomTree)
 
-console.log(preInput)
-console.log(inInput)
-console.log(afInput)
+// console.log(preInput)
+// console.log(inInput)
+// console.log(afInput)
 
 exports.buildRandomTree = buildRandomTree
