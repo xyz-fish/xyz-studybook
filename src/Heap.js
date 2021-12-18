@@ -78,7 +78,7 @@ class Heap {
         }
       }
     }
-    return r || lastOne
+    return r === undefined ? lastOne : r
   }
 
   swap(i, j) {
