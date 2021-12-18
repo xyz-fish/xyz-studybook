@@ -1,7 +1,6 @@
-// 需要构建一个大顶堆
-
-class MaxHeap {
-  constructor() {
+class Heap {
+  constructor(type = 'max') {
+    this.type = type
     this.data = []
   }
 
@@ -16,11 +15,15 @@ class MaxHeap {
   push(val) {
     this.data.push(val)
 
-    let index = this.data.size() - 1
+    let index = this.size() - 1
 
     while (index > 0) {
       const parentIndex = Math.floor((index - 1) / 2)
-      if (this.data[index] > this.data[parentIndex]) {
+      const condition =
+        this.type === 'max'
+          ? this.data[index] > this.data[parentIndex]
+          : this.data[index] < this.data[parentIndex]
+      if (condition) {
         this.swap(index, parentIndex)
         index = parentIndex
       } else {
@@ -47,14 +50,23 @@ class MaxHeap {
 
         let findIndex = index
 
-        if (this.data[findIndex] < this.data[leftIndex]) {
+        const conditionL =
+          this.type === 'max'
+            ? this.data[findIndex] < this.data[leftIndex]
+            : this.data[findIndex] > this.data[leftIndex]
+
+        if (conditionL) {
           findIndex = leftIndex
         }
 
-        if (
-          rightIndex < this.size() &&
-          this.data[findIndex] > this.data[rightIndex]
-        ) {
+        const conditionR =
+          this.type === 'max'
+            ? rightIndex < this.size() &&
+              this.data[findIndex] < this.data[rightIndex]
+            : rightIndex < this.size() &&
+              this.data[findIndex] > this.data[rightIndex]
+
+        if (conditionR) {
           findIndex = rightIndex
         }
 
@@ -76,23 +88,4 @@ class MaxHeap {
   }
 }
 
-//
-function lastStoneWeight(stones) {
-  const stonesHeap = new MaxHeap()
-
-  for (const i of stones) {
-    stonesHeap.push(i)
-  }
-
-  // 剩余1块
-  while (stonesHeap.size() > 1) {
-    const f = stonesHeap.pop()
-    const s = stonesHeap.pop()
-    if (f - s > 0) {
-      stones.push(f - s)
-    }
-  }
-
-  // 返回是有可能 碰到没有了
-  return stonesHeap.top() || 0
-}
+module.exports = Heap
