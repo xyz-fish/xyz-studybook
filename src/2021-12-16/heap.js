@@ -1,7 +1,7 @@
 /**
  * [0, 1, 2, 3, 4, 5] => i => {  2 * i + 1, 2 * i + 2 }
  */
-class Heap {
+class MaxHeap {
   constructor() {
     this.data = []
     this.length = 0
@@ -18,19 +18,27 @@ class Heap {
 
   shiftDown(ind) {
     // 边界是关键点
-    while (ind * 2 + 1 < this.length - 1) {
-      console.log(ind, this.data)
-      // 这里判断是否存在右节点的处理 还是要用 ind * 2 + 2 > this.length - 1
-      if (
-        ind * 2 + 2 > this.length - 1 ||
-        this.data[ind * 2 + 1] > this.data[ind * 2 + 2]
-      ) {
-        this.swap(ind, ind * 2 + 1)
-        ind = ind * 2 + 1
-      } else {
-        this.swap(ind, ind * 2 + 2)
-        ind = ind * 2 + 2
-      }
+    while (ind * 2 + 1 < this.length) {
+      // 这里判断是否存在右节点的处理 还是要用 ind * 2 + 2 > this.length
+
+			let findIndex = ind
+			const leftIndex = ind * 2 + 1
+			const rightIndex = ind * 2 + 2
+
+			if (this.data[findIndex] < this.data[leftIndex]) {
+			 findIndex = leftIndex
+			}
+			
+			if (this.data[findIndex] < this.data[rightIndex]) {
+				findIndex = rightIndex
+			}
+
+			if (findIndex! == ind) {
+				this.swap(findIndex, ind)
+				ind = findIndex
+			} else {
+				break
+			}
     }
   }
 
@@ -48,9 +56,7 @@ class Heap {
     this.data[0] = last
 
     this.shiftDown(0)
-
-    console.log(this.data)
-    return last
+    return
   }
 
   top() {
@@ -64,7 +70,7 @@ class Heap {
   }
 }
 
-const heap = new Heap()
+const heap = new MaxHeap()
 
 heap.push(6)
 heap.push(3)
@@ -79,4 +85,7 @@ heap.push(7)
 
 console.log(heap.data)
 
+heap.pop()
+heap.pop()
+heap.pop()
 heap.pop()
