@@ -8,7 +8,7 @@ const Heap = require('../Heap')
 
 // 小顶堆
 function getLeastNumbers(arr, k) {
-  const heap = new Heap('max')
+  const heap = new Heap()
   const len = arr.length
   for (let i = 0; i < len; i++) {
     heap.push(arr[i])

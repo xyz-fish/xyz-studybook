@@ -1,6 +1,10 @@
+function compare(a, b) {
+  return a - b
+}
+
 class Heap {
-  constructor(type = 'max') {
-    this.type = type
+  constructor(compare) {
+    this.compare = compare
     this.data = []
   }
 
@@ -19,10 +23,7 @@ class Heap {
 
     while (index > 0) {
       const parentIndex = Math.floor((index - 1) / 2)
-      const condition =
-        this.type === 'max'
-          ? this.data[index] > this.data[parentIndex]
-          : this.data[index] < this.data[parentIndex]
+      const condition = this.compare(this.data[index], this.data[parentIndex])
       if (condition) {
         this.swap(index, parentIndex)
         index = parentIndex
@@ -50,21 +51,18 @@ class Heap {
 
         let findIndex = index
 
-        const conditionL =
-          this.type === 'max'
-            ? this.data[findIndex] < this.data[leftIndex]
-            : this.data[findIndex] > this.data[leftIndex]
-
+        const conditionL = this.compare(
+          this.data[leftIndex],
+          this.data[findIndex]
+        )
         if (conditionL) {
           findIndex = leftIndex
         }
 
-        const conditionR =
-          this.type === 'max'
-            ? rightIndex < this.size() &&
-              this.data[findIndex] < this.data[rightIndex]
-            : rightIndex < this.size() &&
-              this.data[findIndex] > this.data[rightIndex]
+        const conditionR = this.compare(
+          this.data[rightIndex],
+          this.data[findIndex]
+        )
 
         if (conditionR) {
           findIndex = rightIndex

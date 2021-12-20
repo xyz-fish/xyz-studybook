@@ -1,7 +1,7 @@
 const Heap = require('../Heap')
 class KthLargest {
   constructor(nums, k) {
-    this.minHeap = new Heap('min')
+    this.minHeap = new Heap((a, b) => b - a)
     this.k = k
     for (const n of nums) {
       this.add(n)
