@@ -59,10 +59,9 @@ class Heap {
           findIndex = leftIndex
         }
 
-        const conditionR = this.compare(
-          this.data[rightIndex],
-          this.data[findIndex]
-        )
+        const conditionR =
+          rightIndex < this.size() &&
+          this.compare(this.data[rightIndex], this.data[findIndex])
 
         if (conditionR) {
           findIndex = rightIndex
