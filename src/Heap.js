@@ -1,9 +1,9 @@
-function compare(a, b) {
-  return a - b
+function defaultCompare(a, b) {
+  return a > b
 }
 
 class Heap {
-  constructor(compare) {
+  constructor(compare = defaultCompare) {
     this.compare = compare
     this.data = []
   }
