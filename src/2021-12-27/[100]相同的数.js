@@ -1,3 +1,5 @@
+// * 地址 https://leetcode-cn.com/problems/same-tree/
+
 function isSameTree(p, q) {
   if (p === null && q === null) return true
 
@@ -14,4 +16,8 @@ function isSameTree(p, q) {
   if (!rightSame) return false
 
   return true
+}
+
+module.exports = {
+  isSameTree: isSameTree
 }
