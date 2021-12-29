@@ -1,30 +1,19 @@
-/**
- *  闯入一个 n 点
- * * quick_find 查找的时候更快 直接 找到集合中第x项 return this.gather的第x项
- */
-class UnionQuickFind {
+class UnionQuickUnion {
   constructor(n) {
     this.gather = Array.from({ length: n }).map((_, ind) => ind)
   }
 
   find(x) {
-    return this.gather[x]
+    if (this.gather[x] === x) return x
+    return this.find(this.gather[x])
   }
 
-  /**
-   * 合并两个集合：把b合计
-   * @param {*} a 0 <= a < n
-   * @param {*} b 0 <= b < n
-   */
   merge(a, b) {
-    const fb = this.find(b)
     const fa = this.find(a)
-
+    const fb = this.find(b)
     if (fa === fb) return
 
-    for (let i = 0; i < this.gather.length; i++) {
-      if (this.gather[i] === fb) this.gather[i] = fa
-    }
+    this.gather[fb] = fa
   }
 
   get() {
@@ -32,7 +21,7 @@ class UnionQuickFind {
   }
 }
 
-const union = new UnionQuickFind(8)
+const union = new UnionQuickUnion(8)
 
 union.merge(0, 1)
 console.log(union.get())
