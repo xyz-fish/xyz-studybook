@@ -1,12 +1,16 @@
+// * https://leetcode-cn.com/problems/number-of-provinces/
+
+const UnionSet = require('../union')
+
+// fn1
 var findCircleNum = function (isConnected) {
   const n = isConnected.length
+  const union = new UnionSet(n)
   let r = n
-
-  const prov = Array.from({ length: n }).map((_, i) => i)
 
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
-      if (isConnected[i][j] === 1 && find(prov, i) !== find(prov, j)) {
+      if (isConnected[i][j] === 1 && union.get(i) !== union.get(j)) {
         union(prov, i, j)
         r--
       }
@@ -15,17 +19,29 @@ var findCircleNum = function (isConnected) {
   return r
 }
 
-function find(set, i) {
-  if (set[i] !== i) {
-    set[i] = find(set, set[i])
-    return set[i]
+// fn2
+var findCircleNum2 = function (isConnected) {
+  const n = isConnected.length
+  const union = new UnionSet(n)
+
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      if (isConnected[i][j] === 1) {
+        union(prov, i, j)
+        r--
+      }
+    }
   }
 
-  return i
-}
+  let r = 0
 
-function union(set, a, b) {
-  set[find(set, b)] = find(set, a)
+  for (let i = 0; i < n; i++) {
+    if (union.get(i) === i) {
+      r++
+    }
+  }
+
+  return r
 }
 
 const exp = [
