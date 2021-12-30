@@ -8,13 +8,19 @@ class UnionSet {
     this.gather = Array.from({ length: n }).map((_, i) => i)
   }
 
-  get(x) {
-    return (this.gather[x] =
-      this.gather[x] === x ? x : this.get(this.gather[x]))
+  find(x) {
+    if (this.gather[x] === x) return x
+    const root = this.find(this.gather[x])
+    this.gather[x] = root
+    return root
   }
 
   merge(a, b) {
-    this.gather[this.get(b)] = this.get(a)
+    this.gather[this.find(b)] = this.find(a)
+  }
+
+  get() {
+    return this.gather
   }
 }
 
@@ -24,9 +30,9 @@ union.merge(0, 1)
 console.log(union.gather)
 union.merge(1, 3)
 console.log(union.gather)
-console.log(union.get(3))
+console.log(union.find(3))
 union.merge(4, 6)
-console.log(union.gather, union.get(6))
+console.log(union.gather, union.find(6))
 
 /*
 [
