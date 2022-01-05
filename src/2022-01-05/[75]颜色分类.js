@@ -31,3 +31,29 @@ function swap(arr, a, b) {
   arr[a] = arr[b]
   arr[b] = tmp
 }
+
+/// fn2
+
+var sortColors2 = function (nums) {
+  const n = nums.length
+  let pt0 = 0,
+    pt1 = 0
+
+  for (let i = 0; i < n; i++) {
+    if (nums[i] === 0) {
+      swap(nums, i, pt0)
+
+      if (pt0 < pt1) {
+        swap(nums, i, pt1)
+      }
+
+      pt0++
+      pt1++
+    } else if (nums[i] === 1) {
+      swap(nums, i, pt1)
+      pt1++
+    }
+  }
+
+  return nums
+}
