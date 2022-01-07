@@ -11,6 +11,13 @@
 ---------- 分割线 -----------------
 
 - 2022-01-05
+	- 1. 不同的搜索二叉树的数量、2. 奇数排在前面、3. 简化路径 [github](./src/2022-01-06)
+	- b栈 
+		1. [快速排序](https://www.bilibili.com/video/BV1H3411e7Fs?)
+		2. [颜色排序](https://www.bilibili.com/video/BV1mD4y1F7YH)
+		3. [奇数排序在前面](https://www.bilibili.com/video/BV1VZ4y1S7oV)
+
+- 2022-01-05
 	- [11]成更多的水 [github](./src/2022-01-05) [掘金](https://juejin.cn/post/7049563514628735013)
 	- [394]字符串编码 [github](./src/2022-01-05)
 
