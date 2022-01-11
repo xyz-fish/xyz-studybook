@@ -38,4 +38,44 @@ function mergeSort(nums, l, r) {
   return nums
 }
 
-console.log(sortArray([3, 5, 9, 2, 6, 8, 7, 4, 0, 1]))
+console.log(s2([3, 5, 9, 2, 6, 8, 7, 4, 1, 0]))
+
+function s2(arr) {
+  const n = arr.length
+  let partN = 1
+  let tmp = []
+
+  while (partN < n) {
+    for (let i = 0; i < n; i += partN * 2) {
+      let l = i
+      let r = i + partN * 2 - 1
+      let mid = (l + r) >> 1
+      tmp = []
+      let p = l,
+        q = mid + 1,
+        j = 0
+
+      r = Math.min(r, n - 1)
+      mid = Math.min(r, mid)
+
+      while (p <= mid || q <= r) {
+        if (q > r || (p <= mid && arr[p] < arr[q])) {
+          tmp[j++] = arr[p++]
+        } else {
+          tmp[j++] = arr[q++]
+        }
+      }
+
+      for (let k = 0; k < tmp.length; k++) {
+        arr[l + k] = tmp[k]
+      }
+
+      console.log(arr, tmp)
+    }
+
+    partN *= 2
+  }
+
+  tmp = null
+  return arr
+}
