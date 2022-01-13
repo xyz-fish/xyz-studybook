@@ -21,6 +21,8 @@ function mergeSort(nums, l, r) {
     p = l,
     q = mid + 1
 
+  console.log(nums[p], nums[q])
+
   while (p <= mid || q <= r) {
     if (q > r || (p <= mid && nums[p] < nums[q])) {
       tmp[j++] = nums[p++]
@@ -38,7 +40,7 @@ function mergeSort(nums, l, r) {
   return nums
 }
 
-console.log(s2([3, 5, 9, 2, 6, 8, 7, 4, 1, 0]))
+console.log(sortArray([3, 5, 9, 2, 6, 8, 7, 4, 1, 0]))
 
 function s2(arr) {
   const n = arr.length
