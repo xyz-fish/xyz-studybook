@@ -45,3 +45,38 @@ function relativeSortArray(arr1, arr2) {
 
   return ret
 }
+
+// 计数
+
+function relativeSortArray(arr1, arr2) {
+  const len1 = arr1.length,
+    len2 = arr2.length,
+    max = Math.max.apply(null, arr1),
+    counter = Array.from({ length: max + 1 }).fill(0)
+
+  // 对arr1 排序计数
+  for (let i = 0; i < len1; i++) {
+    counter[arr[i]]++
+  }
+
+  const ret = []
+  let ind = 0
+
+  // 先排 按照arr2的排
+  for (let i = 0; i < len2; i++) {
+    while (counter[arr2[i]]--) {
+      ret[ind++] = arr[i]
+    }
+  }
+
+  // 再 把其他元素排了
+  for (let i = 0; i < max + 1; i++) {
+    if (counter[i] > 0) {
+      while (counter[i]--) {
+        ret[ind++] = i
+      }
+    }
+  }
+
+  return ret
+}
